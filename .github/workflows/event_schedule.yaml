@@ -1,0 +1,16 @@
+name: Execute AWS Lambda Function
+
+on:
+  schedule:
+    - cron: '0 6,18 * * *'
+
+jobs:
+  ejecutar_lambda:
+    runs-on: alpine-latest
+    steps:
+      - name: Invoke Lambda Function
+        uses: aws-actions/aws-lambda-invoke@v1
+        with:
+          aws-region: 'us-east-1' 
+          function-name: 'MiFuncionLambda' 
+          payload: '{ url:"https://big-five-prediction.3.us-1.fl0.io/" }' 
