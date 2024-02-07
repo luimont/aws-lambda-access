@@ -7,7 +7,7 @@ on:
 
 jobs:
   ejecutar_lambda:
-    runs-on: alpine-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Invoke Lambda Function
         uses: aws-actions/aws-lambda-invoke@v1
