@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Invoke Lambda Function
-        uses: aws-actions/aws-lambda-invoke@v1
+        uses: gagoar/invoke-aws-lambda@master
         with:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: 'us-east-1' 
           function-name: 'MiFuncionLambda' 
           payload: '{ "url": "https://big-five-prediction.3.us-1.fl0.io/" }'
