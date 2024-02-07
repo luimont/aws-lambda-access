@@ -2,7 +2,7 @@ import requests
 
 def lambda_handler(event, context):
   """
-  Función Lambda que se ejecuta cada minuto para evitar la inactividad en un sitio web.
+  Función Lambda que se ejecuta para evitar la inactividad en un sitio web.
   """
 
   # Obtiene la dirección del sitio web del evento
