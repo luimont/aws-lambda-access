@@ -20,6 +20,6 @@ jobs:
           payload: '{ "url": "https://big-five-prediction.3.us-1.fl0.io/" }'
       - name: Get the lambda response
         #run: echo "Output:$(toJson(steps.invoke_lambda.outputs))"
-        run: echo $(toJson(steps.ejecutar_lambda.outputs))
+        run: echo $(toJson(steps.invoke_lambda.outputs))
         #run: echo '${{ fromJSON(steps.execute_lambda.outputs.response).Payload }}' # Solo mostrar por pantalla
         #run: echo '${{ fromJSON(steps.foobar.outputs.response).Payload }}' > invocation-response.json # Generar un archivo
