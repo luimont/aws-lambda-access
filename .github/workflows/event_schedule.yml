@@ -1,9 +1,12 @@
 name: Execute AWS Lambda Function
 
 on:
-  schedule:
-    - cron: '0 6,18 * * *'
   workflow_dispatch:  # Permite la ejecución manual
+  schedule:
+    - cron: '0 6,18 * * *' # Se ejecuta cada dia a las 6hs y 18hs (UTC)
+  push:
+    branches:
+      - main  # Se ejecuta cada vez que se hace un push en rama main
 
 jobs:
   execute_lambda:
@@ -18,8 +21,6 @@ jobs:
           REGION: 'us-east-1' 
           FunctionName: 'access_to_web' 
           Payload: '{ "url": "https://big-five-prediction.3.us-1.fl0.io/" }'
-      - name: Get the lambda response
-        #run: echo "Output:$(toJson(steps.invoke_lambda.outputs))"
-        #run: echo $(toJson(steps.invoke_lambda.outputs))
+      - name: Get the Lambda Function response
         run: echo '${{ fromJSON(steps.invoke_lambda.outputs.response).Payload }}' # Solo mostrar por pantalla
         #run: echo '${{ fromJSON(steps.invoke_lambda.outputs.response).Payload }}' > invocation-response.json # Generar un archivo
