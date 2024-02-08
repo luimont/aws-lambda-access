@@ -15,11 +15,11 @@ jobs:
         with:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-1' 
-          functionName: 'access_to_web' 
-          payload: '{ "url": "https://big-five-prediction.3.us-1.fl0.io/" }'
+          REGION: 'us-east-1' 
+          FunctionName: 'access_to_web' 
+          Payload: '{ "url": "https://big-five-prediction.3.us-1.fl0.io/" }'
       - name: Get the lambda response
         #run: echo "Output:$(toJson(steps.invoke_lambda.outputs))"
-        run: echo $(toJson(steps.invoke_lambda.outputs))
+        #run: echo $(toJson(steps.invoke_lambda.outputs))
         #run: echo '${{ fromJSON(steps.execute_lambda.outputs.response).Payload }}' # Solo mostrar por pantalla
-        #run: echo '${{ fromJSON(steps.foobar.outputs.response).Payload }}' > invocation-response.json # Generar un archivo
+        run: echo '${{ fromJSON(steps.invoke_lambda.outputs.response).Payload }}' > invocation-response.json # Generar un archivo
