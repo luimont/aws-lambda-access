@@ -9,7 +9,7 @@ jobs:
   execute_lambda:
     runs-on: ubuntu-latest
     steps:
-      - name: Invoke Lambda Function
+      - name: step_name #Invoke Lambda Function
         uses: gagoar/invoke-aws-lambda@master
         with:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -18,5 +18,6 @@ jobs:
           functionName: 'access_to_web' 
           payload: '{ "url": "https://big-five-prediction.3.us-1.fl0.io/" }'
       - name: Get the lambda response
-        run: echo '${{ fromJSON(steps.execute_lambda.outputs.response).Payload }}' # Solo mostrar por pantalla
+        run: echo "Output:${{ steps.execute_lambda.outputs }}"
+        #run: echo '${{ fromJSON(steps.execute_lambda.outputs.response).Payload }}' # Solo mostrar por pantalla
         #run: echo '${{ fromJSON(steps.foobar.outputs.response).Payload }}' > invocation-response.json # Generar un archivo
