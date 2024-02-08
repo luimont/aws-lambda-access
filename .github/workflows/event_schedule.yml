@@ -6,7 +6,7 @@ on:
   workflow_dispatch:  # Permite la ejecución manual
 
 jobs:
-  ejecutar_lambda:
+  execute_lambda:
     runs-on: ubuntu-latest
     steps:
       - name: Invoke Lambda Function
@@ -17,6 +17,6 @@ jobs:
           aws-region: 'us-east-1' 
           functionName: 'access_to_web' 
           payload: '{ "url": "https://big-five-prediction.3.us-1.fl0.io/" }'
-      - name: Store response payload to file
-        run: echo '${{ fromJSON(steps.foobar.outputs.response).Payload }}' # Solo mostrar por pantalla
+      - name: Get the lambda response
+        run: echo '${{ fromJSON(steps.execute_lambda.outputs.response).Payload }}' # Solo mostrar por pantalla
         #run: echo '${{ fromJSON(steps.foobar.outputs.response).Payload }}' > invocation-response.json # Generar un archivo
