@@ -3,7 +3,7 @@ name: Execute AWS Lambda Function
 on:
   workflow_dispatch:  # Permite la ejecución manual
   schedule:
-    - cron: '0 6,18 * * *' # Se ejecuta cada dia a las 6hs y 18hs (UTC)
+    - cron: '0 0,4,8,12,16,20 * * *' # Se ejecuta cada dia a las 6, 4, 8, 12, 16 y 20hs (UTC)
   push:
     branches:
       - main  # Se ejecuta cada vez que se hace un push en rama main
